@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Lookup Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .result-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        #map {
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>IP Lookup Result</h1>
+    <div class="result-container">
+        <table>
+            <tr><th>IP</th><td>{{ data['ip'] }}</td></tr>
+            <tr><th>Hostname</th><td>{{ data['hostname'] }}</td></tr>
+            <tr><th>City</th><td>{{ data['city'] }}</td></tr>
+            <tr><th>Region</th><td>{{ data['region'] }}</td></tr>
+            <tr><th>Country</th><td>{{ data['country'] }}</td></tr>
+            <tr><th>Location</th><td>{{ data['loc'] }}</td></tr>
+            <tr><th>Org</th><td>{{ data['org'] }}</td></tr>
+        </table>
+        <div id="map"></div>
+    </div>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="{{ adsense_client_id }}"
+         data-ad-slot="{{ adsense_ad_slot }}"
+         data-ad-format="auto"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <!-- Google Maps -->
+    <script>
+        function initMap() {
+            var location = {lat: {{ lat }}, lng: {{ lon }}};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: location
+            });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&callback=initMap"></script>
+</body>
+      </html>
