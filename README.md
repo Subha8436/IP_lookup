@@ -1,13 +1,19 @@
 <h1>Instalation</h1>
-___Clone___
+
+- <h2>Clone</h2>
+
 ```
 git clone https://github.com/Subha8436/IP_lookup.git
 ```
-___Change Directory___
+- <h2></h2>Change Directory</h2>
+
 ```
 cd IP_lookup
 ```
-___Run___
+- <h2></h2>Run</h2>
+
 ```
 python app.py
 ```
+
+create by Subha Ad
